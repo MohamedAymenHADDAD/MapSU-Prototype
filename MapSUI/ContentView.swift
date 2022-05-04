@@ -6,16 +6,50 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct ContentView: View {
+    
+    @ObservedObject var viewModel: MapViewModel
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        Map(
+            mapRect: $viewModel.mapRect,
+            interactionModes: [.all],
+            showsUserLocation: true,
+            userTrackingMode: .constant(.none),
+            annotationItems: viewModel.annotations) { poi in
+                decideAnnotation(poi: poi)
+            }
+            .onAppear {
+                viewModel.displayAnnotation()
+            }
+    }
+    
+    private func decideAnnotation(poi: AnnotationModel) -> some MapAnnotationProtocol {
+        if poi.isRegionBound == false {
+            return MapAnnotationWrapper(
+                MapAnnotation(coordinate: poi.coordinate) {
+                    MapAnnotationView(poi: poi)
+                        .onTapGesture {
+                            viewModel.didSelectAnnotation(poi)
+                        }
+                }
+            )
+        } else {
+            return MapAnnotationWrapper(
+                MapAnnotation(coordinate: poi.coordinate) {
+                    Rectangle()
+                        .stroke(Color.blue)
+                        .frame(width: 20, height: 20)
+                }
+            )
+        }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(viewModel: MapViewModel())
     }
 }
