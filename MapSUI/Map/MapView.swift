@@ -8,7 +8,7 @@
 import SwiftUI
 import MapKit
 
-struct ContentView: View {
+struct MapView: View {
     
     @ObservedObject var viewModel: MapViewModel
     
@@ -50,6 +50,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(viewModel: MapViewModel())
+        MapView(viewModel: MapViewModel())
     }
 }

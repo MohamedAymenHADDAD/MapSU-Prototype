@@ -14,7 +14,7 @@
 		AD1D93F72821743B00DAF6AD /* CustomMapAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1D93F62821743B00DAF6AD /* CustomMapAnnotation.swift */; };
 		AD1D93F92822769200DAF6AD /* MapAnnotation+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1D93F82822769200DAF6AD /* MapAnnotation+extension.swift */; };
 		AD853519281BD3F0002502D8 /* MapSUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD853518281BD3F0002502D8 /* MapSUIApp.swift */; };
-		AD85351B281BD3F0002502D8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD85351A281BD3F0002502D8 /* ContentView.swift */; };
+		AD85351B281BD3F0002502D8 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD85351A281BD3F0002502D8 /* MapView.swift */; };
 		AD85351D281BD3F2002502D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD85351C281BD3F2002502D8 /* Assets.xcassets */; };
 		AD853520281BD3F2002502D8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD85351F281BD3F2002502D8 /* Preview Assets.xcassets */; };
 		AD853527281BD420002502D8 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD853526281BD420002502D8 /* MapViewModel.swift */; };
@@ -34,7 +34,7 @@
 		AD1D93F82822769200DAF6AD /* MapAnnotation+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapAnnotation+extension.swift"; sourceTree = "<group>"; };
 		AD853515281BD3EF002502D8 /* MapSUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapSUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD853518281BD3F0002502D8 /* MapSUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSUIApp.swift; sourceTree = "<group>"; };
-		AD85351A281BD3F0002502D8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		AD85351A281BD3F0002502D8 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		AD85351C281BD3F2002502D8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AD85351F281BD3F2002502D8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		AD853526281BD420002502D8 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
@@ -70,6 +70,43 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		AD1D93FA28229B1500DAF6AD /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				AD1D93EA28212F9B00DAF6AD /* Color+extension.swift */,
+				AD1D93F82822769200DAF6AD /* MapAnnotation+extension.swift */,
+				AD1D93F02821537400DAF6AD /* SUMap+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		AD1D93FB28229B3C00DAF6AD /* Wrapper */ = {
+			isa = PBXGroup;
+			children = (
+				AD1D93EE28214B5A00DAF6AD /* MapAnnotationWrapper.swift */,
+			);
+			path = Wrapper;
+			sourceTree = "<group>";
+		};
+		AD1D93FC28229B5E00DAF6AD /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				AD853526281BD420002502D8 /* MapViewModel.swift */,
+				AD85351A281BD3F0002502D8 /* MapView.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		AD1D93FD28229B8000DAF6AD /* Annotation */ = {
+			isa = PBXGroup;
+			children = (
+				AD1D93F62821743B00DAF6AD /* CustomMapAnnotation.swift */,
+				AD853528281BD42D002502D8 /* AnnotationModel.swift */,
+				AD1D93F428216D2400DAF6AD /* MapAnnotationView.swift */,
+			);
+			path = Annotation;
+			sourceTree = "<group>";
+		};
 		AD85350C281BD3EF002502D8 = {
 			isa = PBXGroup;
 			children = (
@@ -91,18 +128,13 @@
 		AD853517281BD3EF002502D8 /* MapSUI */ = {
 			isa = PBXGroup;
 			children = (
+				AD1D93FD28229B8000DAF6AD /* Annotation */,
+				AD1D93FC28229B5E00DAF6AD /* Map */,
+				AD1D93FB28229B3C00DAF6AD /* Wrapper */,
+				AD1D93FA28229B1500DAF6AD /* Extensions */,
 				AD853518281BD3F0002502D8 /* MapSUIApp.swift */,
-				AD1D93EE28214B5A00DAF6AD /* MapAnnotationWrapper.swift */,
-				AD1D93F428216D2400DAF6AD /* MapAnnotationView.swift */,
-				AD1D93F62821743B00DAF6AD /* CustomMapAnnotation.swift */,
-				AD1D93F02821537400DAF6AD /* SUMap+Extension.swift */,
-				AD1D93F82822769200DAF6AD /* MapAnnotation+extension.swift */,
-				AD85351A281BD3F0002502D8 /* ContentView.swift */,
 				AD85351C281BD3F2002502D8 /* Assets.xcassets */,
 				AD85351E281BD3F2002502D8 /* Preview Content */,
-				AD853526281BD420002502D8 /* MapViewModel.swift */,
-				AD853528281BD42D002502D8 /* AnnotationModel.swift */,
-				AD1D93EA28212F9B00DAF6AD /* Color+extension.swift */,
 			);
 			path = MapSUI;
 			sourceTree = "<group>";
@@ -231,7 +263,7 @@
 			files = (
 				AD1D93EF28214B5A00DAF6AD /* MapAnnotationWrapper.swift in Sources */,
 				AD853529281BD42D002502D8 /* AnnotationModel.swift in Sources */,
-				AD85351B281BD3F0002502D8 /* ContentView.swift in Sources */,
+				AD85351B281BD3F0002502D8 /* MapView.swift in Sources */,
 				AD1D93EB28212F9B00DAF6AD /* Color+extension.swift in Sources */,
 				AD1D93F12821537400DAF6AD /* SUMap+Extension.swift in Sources */,
 				AD1D93F528216D2400DAF6AD /* MapAnnotationView.swift in Sources */,
