@@ -30,7 +30,7 @@ struct MapView: View {
         if poi.isRegionBound == false {
             return MapAnnotationWrapper(
                 MapAnnotation(coordinate: poi.coordinate) {
-                    MapAnnotationView(poi: poi)
+                    MapAnnotationView(poi: poi, state: viewModel.updateAnnotationState(for: poi.id))
                         .onTapGesture {
                             viewModel.didSelectAnnotation(poi)
                         }

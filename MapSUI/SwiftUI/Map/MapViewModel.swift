@@ -20,10 +20,14 @@ final class MapViewModel: ObservableObject {
     @Published private(set) var ignoreRegionChange: Bool = false
     
     @Published var annotations: [AnnotationModel] = []
+    private(set) var selectedAnnotations: Set<AnnotationModel> = []
+
     
     private var mapCancellables = Set<AnyCancellable>()
     private var annotationsCancellables = Set<AnyCancellable>()
+    
     private let spanDelta: Double = 0.01
+    private(set) var lastSelectedAnnotationId: UUID?
 
     init() {
         subscribeToMapRectangleBoundsChange()
@@ -60,7 +64,6 @@ final class MapViewModel: ObservableObject {
     }
     
     // MARK: - Map
-    
     private func updateMapRect(for annotations: [AnnotationModel]) {
         let locationCoordianntesForAnnotations = annotations.map(\.coordinate)
         mapRect = locationCoordianntesForAnnotations.reduce(MKMapRect.null) { rect, coordinate in
@@ -110,6 +113,9 @@ final class MapViewModel: ObservableObject {
     // MARK: - Annotations
     func didSelectAnnotation(_ model: AnnotationModel) {
         print("___ didTapAnnotation \(model.label)!")
+        selectedAnnotations.insert(model)
+        lastSelectedAnnotationId = model.id
+        annotations.shuffle()
     }
     
     func updateRegionResults(_ bounds: SearchRegionBounds) {
@@ -123,6 +129,12 @@ final class MapViewModel: ObservableObject {
 //        ])
     }
     
+    func updateAnnotationState(for id: UUID) -> MapAnnotationState {
+        guard lastSelectedAnnotationId != id else { return .isSelected }
+        guard selectedAnnotations.contains(where: {$0.id == id}) == true else { return .neverSelected }
+        return .wasSelected
+    }
+    
     func displayAnnotation()  {
         self.ignoreRegionChange = true
 
@@ -133,7 +145,6 @@ final class MapViewModel: ObservableObject {
             AnnotationModel(with: "4", lat: 52.5103488, lng: 13.3880743),
             AnnotationModel(with: "5", lat: 52.511653, lng: 13.389325),
             AnnotationModel(with: "6", lat: 52.5097644, lng: 13.3954301)
-
         ]
     }
 }

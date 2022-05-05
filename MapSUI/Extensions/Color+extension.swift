@@ -15,4 +15,8 @@ extension Color {
             blue: .random(in: 0...1)
         )
     }
+    
+    static var randomOpacity: Color {
+        return .purple.opacity(.random(in: 0.2...1))
+    }
 }

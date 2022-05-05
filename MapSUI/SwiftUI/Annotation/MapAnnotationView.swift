@@ -11,10 +11,11 @@ import MapKit
 struct MapAnnotationView: View {
 
     let poi: AnnotationModel
+    var state: MapAnnotationState = .neverSelected
     
     var body: some View {
         Circle()
-            .fill(poi.isRegionBound ? Color.mint: poi.backgroundColor.opacity(0.7))
+            .fill(poi.isRegionBound ? Color.mint: state.colors())
             .frame(width: 44, height: 44)
             .overlay {
                 Text(poi.label)
