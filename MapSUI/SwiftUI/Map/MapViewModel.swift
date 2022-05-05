@@ -139,20 +139,18 @@ final class MapViewModel: ObservableObject {
     
     func updateAnnotationView(in mapView: MKMapView) {
         DispatchQueue.main.async { [weak self] in
-            guard let annotation = self?.lastSelectedAnnotation else { return }
+            guard
+                let annotation = self?.lastSelectedAnnotation,
+                let mkAnnotation = mapView.annotations.first(where: { $0.coordinate == annotation.coordinate}),
+                let mkAnnoationView = mapView.view(for: mkAnnotation)
+            else { return }
             
-            for mkAnnotation in mapView.annotations {
-                let mkAnnotationView = mapView.view(for: mkAnnotation)
-                guard mkAnnotation.coordinate != annotation.coordinate else {
-                    mkAnnotationView?.layer.zPosition = 5
-                    return
-                }
-                guard self?.selectedAnnotations.contains(where: { $0.coordinate == mkAnnotation.coordinate }) == true else {
-                    mkAnnotationView?.layer.zPosition = 1
-                    return
-                }
-                mkAnnotationView?.layer.zPosition = 2
-            }
+
+            ///Debug view hierarchy displays the view properly, the selectedAnnotation is brought to the front however on device it is not.
+            mkAnnoationView.superview?.bringSubviewToFront(mkAnnoationView)
+            
+            ///Does not work
+            // mkAnnoationView.selectedZPriority = MKAnnotationViewZPriority.max
         }
     }
     
