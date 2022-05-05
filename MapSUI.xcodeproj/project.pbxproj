@@ -17,6 +17,8 @@
 		AD853527281BD420002502D8 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD853526281BD420002502D8 /* MapViewModel.swift */; };
 		AD853529281BD42D002502D8 /* AnnotationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD853528281BD42D002502D8 /* AnnotationModel.swift */; };
 		ADEF7FAB2823D1B700B65D6A /* MapAnnotationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEF7FAA2823D1B700B65D6A /* MapAnnotationState.swift */; };
+		ADEF7FAD28240C1C00B65D6A /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEF7FAC28240C1C00B65D6A /* View+Extension.swift */; };
+		ADEF7FAF282421E600B65D6A /* CLLocationCoordinate2D+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEF7FAE282421E600B65D6A /* CLLocationCoordinate2D+Extension.swift */; };
 		F9A066CDCF4E47253B68869C /* libPods-MapSUI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EE6F60E45745A982A0844E0 /* libPods-MapSUI.a */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +37,8 @@
 		AD853526281BD420002502D8 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		AD853528281BD42D002502D8 /* AnnotationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationModel.swift; sourceTree = "<group>"; };
 		ADEF7FAA2823D1B700B65D6A /* MapAnnotationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAnnotationState.swift; sourceTree = "<group>"; };
+		ADEF7FAC28240C1C00B65D6A /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
+		ADEF7FAE282421E600B65D6A /* CLLocationCoordinate2D+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +74,8 @@
 			isa = PBXGroup;
 			children = (
 				AD1D93EA28212F9B00DAF6AD /* Color+extension.swift */,
+				ADEF7FAC28240C1C00B65D6A /* View+Extension.swift */,
+				ADEF7FAE282421E600B65D6A /* CLLocationCoordinate2D+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -294,6 +300,8 @@
 				AD1D93F528216D2400DAF6AD /* MapAnnotationView.swift in Sources */,
 				ADEF7FAB2823D1B700B65D6A /* MapAnnotationState.swift in Sources */,
 				AD853519281BD3F0002502D8 /* MapSUIApp.swift in Sources */,
+				ADEF7FAF282421E600B65D6A /* CLLocationCoordinate2D+Extension.swift in Sources */,
+				ADEF7FAD28240C1C00B65D6A /* View+Extension.swift in Sources */,
 				AD853527281BD420002502D8 /* MapViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

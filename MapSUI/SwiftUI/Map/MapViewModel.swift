@@ -27,7 +27,7 @@ final class MapViewModel: ObservableObject {
     private var annotationsCancellables = Set<AnyCancellable>()
     
     private let spanDelta: Double = 0.01
-    private(set) var lastSelectedAnnotationId: UUID?
+    private(set) var lastSelectedAnnotation: AnnotationModel?
 
     init() {
         subscribeToMapRectangleBoundsChange()
@@ -114,9 +114,11 @@ final class MapViewModel: ObservableObject {
     func didSelectAnnotation(_ model: AnnotationModel) {
         print("___ didTapAnnotation \(model.label)!")
         selectedAnnotations.insert(model)
-        lastSelectedAnnotationId = model.id
+        lastSelectedAnnotation = model
         annotations.shuffle()
     }
+    
+    
     
     func updateRegionResults(_ bounds: SearchRegionBounds) {
         self.ignoreRegionChange = false
@@ -129,10 +131,29 @@ final class MapViewModel: ObservableObject {
 //        ])
     }
     
-    func updateAnnotationState(for id: UUID) -> MapAnnotationState {
-        guard lastSelectedAnnotationId != id else { return .isSelected }
-        guard selectedAnnotations.contains(where: {$0.id == id}) == true else { return .neverSelected }
+    func updateAnnotationState(for model: AnnotationModel) -> MapAnnotationState {
+        guard lastSelectedAnnotation != model else { return .isSelected }
+        guard selectedAnnotations.contains(model) == true else { return .neverSelected }
         return .wasSelected
+    }
+    
+    func updateAnnotationView(in mapView: MKMapView) {
+        DispatchQueue.main.async { [weak self] in
+            guard let annotation = self?.lastSelectedAnnotation else { return }
+            
+            for mkAnnotation in mapView.annotations {
+                let mkAnnotationView = mapView.view(for: mkAnnotation)
+                guard mkAnnotation.coordinate != annotation.coordinate else {
+                    mkAnnotationView?.layer.zPosition = 5
+                    return
+                }
+                guard self?.selectedAnnotations.contains(where: { $0.coordinate == mkAnnotation.coordinate }) == true else {
+                    mkAnnotationView?.layer.zPosition = 1
+                    return
+                }
+                mkAnnotationView?.layer.zPosition = 2
+            }
+        }
     }
     
     func displayAnnotation()  {

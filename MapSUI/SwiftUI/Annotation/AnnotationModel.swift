@@ -34,7 +34,8 @@ class AnnotationModel: Identifiable {
 extension AnnotationModel: Equatable {
     
     static func == (lhs: AnnotationModel, rhs: AnnotationModel) -> Bool {
-        return lhs.id == rhs.id
+        return lhs.id == rhs.id &&
+        lhs.coordinate == rhs.coordinate
     }
 }
 

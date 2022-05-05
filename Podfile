@@ -3,4 +3,5 @@
 
 target 'MapSUI' do
   pod 'Reveal-SDK'
+  pod 'Introspect'
 end
